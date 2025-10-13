@@ -7,10 +7,5 @@
  * is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
-/**
- * View model definition
- */
-
-const model = {
-    
-}
+/** For conversion between tool position and tile number */
+export const mapTileSize = 32

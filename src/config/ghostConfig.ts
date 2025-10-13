@@ -7,10 +7,17 @@
  * is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
-/**
- * View model definition
- */
 
-const model = {
-    
+export interface GhostConfig {
+    type: ObjectType,
+    object: number
 }
+
+export enum GhostConfigRow {
+    quarterTileFlat
+}
+
+export var ghostConfig: GhostConfig[] = [
+    {type: "small_scenery", object: 124}
+]
+

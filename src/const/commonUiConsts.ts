@@ -8,9 +8,27 @@
  *****************************************************************************/
 
 /**
- * View model definition
+ * Common GUI constants
  */
 
-const model = {
-    
-}
+
+/**
+ * Sizes for bigger button
+ */
+export const imgButton = {
+    width: 45,
+    height: 34
+};
+
+/**
+ * Sizes for smaller button
+ */
+export const imgButtonSmall = {
+    width: 28,
+    height: 25
+};
+
+/**
+ * You know it...
+ */
+export const answerToLifeAndEverything = 42;

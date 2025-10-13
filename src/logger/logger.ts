@@ -2,6 +2,8 @@
  * Logging unit
  */
 
+import { build } from "../environment";
+
 //**
 // Based on OpenRCT2-ProxyPather by Basssiiie, 
 // https://github.com/Basssiiie/OpenRCT2-ProxyPather
@@ -9,7 +11,6 @@
 // originally licensed under MIT License
 // see licenses directory */
 
-import { build } from "./environment";
 
 /**
  * Logs a message if plugin is build with dev option, or does nothing otherwise.
