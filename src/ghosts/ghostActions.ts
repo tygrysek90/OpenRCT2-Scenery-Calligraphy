@@ -7,7 +7,8 @@
  * is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
-import { ghostConfig, GhostConfigRow } from "../config/ghostConfig"
+import { objectConfig } from "../config/objConfig"
+import { usedFor } from "../const/objUsedForEnum"
 import { ghostPlaceAction } from "./ghostPlaceAction"
 import { GhostRealmArgs } from "./GhostRealmArgs"
 import { ghostRemoveAction } from "./ghostRemoveAction"
@@ -64,7 +65,7 @@ export function determineGoodHeight(tile: Tile): number | undefined {
  * @param tile 
  * @param direction 
  */
-function setGhost(type: GhostConfigRow, xTile: number, yTile: number, direction: Direction, quadrant: number) {
+function setGhost(usedFor: usedFor, xTile: number, yTile: number, direction: Direction, quadrant: number) {
     let tile = map.getTile(xTile, yTile)
     let goodHeight = determineGoodHeight(tile)
 
@@ -77,15 +78,15 @@ function setGhost(type: GhostConfigRow, xTile: number, yTile: number, direction:
             zBase: goodHeight,
             direction: direction,
             quadrant: quadrant,
-            type: ghostConfig[type].type,
-            object: ghostConfig[type].object
+            type: "small_scenery",
+            object: objectConfig[usedFor].id ?? 0
         })       
 
         cemetery.push({
             xTile: tile.x,
             yTile: tile.y,
-            type: ghostConfig[type].type,
-            object: ghostConfig[type].object,
+            type: "small_scenery",
+            object: objectConfig[usedFor].id ?? 0,
             quadrant: quadrant,
             direction: direction,
         })

@@ -7,17 +7,13 @@
  * is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
+import { Colour } from "openrct2-flexui";
 
-export interface GhostConfig {
-    type: ObjectType,
-    object: number
+/**
+ * GUI functions
+ */
+
+export function onPreviewDraw(g: GraphicsContext) {
+    g.colour = Colour.Grey
+    g.box(0, 0, 269, 99)
 }
-
-export enum GhostConfigRow {
-    quarterTileFlat
-}
-
-export var ghostConfig: GhostConfig[] = [
-    {type: "small_scenery", object: 124}
-]
-

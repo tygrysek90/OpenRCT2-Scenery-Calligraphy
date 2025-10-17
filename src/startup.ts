@@ -8,7 +8,7 @@
  *****************************************************************************/
 
 import { build, pluginName } from "./environment";
-import { mainWindow } from "./mainWin";
+import { mainWindow } from "./mainWin/mainWin";
 
 export function startup()
 {
