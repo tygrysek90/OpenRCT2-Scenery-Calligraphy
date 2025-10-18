@@ -1,32 +1,31 @@
 import { groupbox, LayoutDirection, vertical, graphics, Colour, horizontal, button, colourPicker, FlexiblePosition, Parsed, WidgetCreator, FlexibleLayoutContainer } from "openrct2-flexui"
 import { padCentre, sceneryPreview, imgButtonSmall } from "../const/commonUiConsts"
+import { objectSelectionWindow } from "../selectWin/objSelectionWind"
+import { previewGraphics } from "../guiFx/previewGraphics"
 
 function elementSelector() {
     return   groupbox({
             text: "Background",
             direction: LayoutDirection.Horizontal,
             content: [
+                // 1st of 2 verticals
+                // preview, open object selection and eyedropper tool
                 vertical({
                     padding: padCentre,
                     content: [
-                        graphics({
-                            padding: padCentre,
-                            width: sceneryPreview.width,
-                            height: sceneryPreview.height,
-                            onDraw(g) {
-                                g.colour = Colour.DarkGreen
-                                g.well(0,0,sceneryPreview.width-1, sceneryPreview.height-1)
-                        },
-                        }),
+                        previewGraphics(),
                         horizontal({
                             padding: padCentre,
 
                             content: [
+                                // open object selection window
                                 button({
                                     width: imgButtonSmall.width,
                                     height: imgButtonSmall.height,
-                                    image: 29371
+                                    image: 29371,
+                                    onClick: () => objectSelectionWindow.open()
                                 }),
+                                // eyedropper (select obj)
                                 button({
                                     width: imgButtonSmall.width,
                                     height: imgButtonSmall.height,
@@ -37,6 +36,8 @@ function elementSelector() {
                         
                     ]
                 }),
+                // 2st of 2 vertical
+                // brush image, 3 times colour picker
                 vertical({
                     content: [
                         graphics({

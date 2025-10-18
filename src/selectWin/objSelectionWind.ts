@@ -16,6 +16,9 @@ import { window, Colour, groupbox, LayoutDirection, button, horizontal, vertical
 import { objSelModel } from "./objSelModel"
 import { onClickClearSearch,  onHighlightObjectList, onPreviewDraw, onSearchParamChange, onWindowOpen, onWindowClose } from "./objSelActions"
 import { pluginName } from "../environment"
+import { previewGraphics } from "../guiFx/previewGraphics"
+import { chosenPreview } from "./chosenPreview"
+import { textButton } from "../const/commonUiConsts"
 
 
 /**
@@ -36,6 +39,23 @@ export const objectSelectionWindow = window({
     position: "center",
     colours: [Colour.DarkGreen, Colour.DarkGreen],
     content: [
+        horizontal({
+            content: [
+                chosenPreview(),
+                chosenPreview(),
+                chosenPreview(),
+                groupbox({
+                    text: "Options",
+                    content: [
+                        button({
+                            width: textButton.width,
+                            height: textButton.height,
+                            text: "Set default" 
+                        })
+                    ]
+                })
+            ]
+        }),
         // EVERYTHING BELOW type selector
         // two verticals
         groupbox({
@@ -79,7 +99,7 @@ export const objectSelectionWindow = window({
                         })
                     ]
                 }),
-                // RIGHT vertical - preview
+                // RIGHT vertical - selected object and preview
                 groupbox({
                     width: 160,
                     content: [
