@@ -7,12 +7,16 @@
  * is licensed under the GNU General Public License version 3.
  *****************************************************************************/
 
+import { initConfig } from "./config/objConfig";
 import { build, pluginName } from "./environment";
+import { debug } from "./logger/logger";
 import { mainWindow } from "./mainWin/mainWin";
 
 export function startup()
 {
 	// Write code here that should happen on startup of the plugin.
+	debug("calling to init config")
+	initConfig()
 
 	// Register a menu item under the map icon:
 	if (typeof ui !== "undefined")

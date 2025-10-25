@@ -15,12 +15,14 @@
 import { button, Colour, graphics, groupbox, horizontal, label, LayoutDirection, tab, tabwindow, textbox } from "openrct2-flexui";
 import { pluginName, pluginVersion } from "../environment";
 import { onPreviewDraw } from "./mainActions";
-import { textButton } from "../const/commonUiConsts";
-import { elementSelectors } from "./elementSelector";
+import { imgButtonSmall, padCentre, sceneryPreview, textButton } from "../const/commonUiConsts";
+import { elementSelector } from "../guiFx/elementSelector";
+import { objectSelectionWindow } from "../selectWin/objSelectionWind";
+import { usedFor } from "../const/objUsedForEnum";
 
 export const mainWindow = tabwindow({
     title: pluginName,
-    width: 340,
+    width: 3*(6+sceneryPreview.width+imgButtonSmall.width)+12+6,
     height: 400,
     colours: [Colour.DarkBrown, Colour.DarkGreen, Colour.DarkGreen],
     static: [
@@ -39,7 +41,7 @@ export const mainWindow = tabwindow({
                     content: [
                         graphics({
                             padding: {left: "1w", right: "1w"},
-                            width: 270,
+                            width: 280,
                             height: 100, 
                             onDraw: (g) => onPreviewDraw(g)
                         }),
@@ -60,7 +62,37 @@ export const mainWindow = tabwindow({
                     ]
                 }),
                 horizontal({
-                    content: elementSelectors()
+                    content: [
+                        elementSelector(usedFor.Text),
+                        elementSelector(usedFor.Outline),
+                        elementSelector(usedFor.Background),
+                    ]
+                }),
+                groupbox({
+                    width: "1w",
+                    direction: LayoutDirection.Horizontal,
+                    text: "Tools",
+                    content: [
+                        horizontal({
+                            padding: padCentre,
+                            content: [
+                                button({
+                                    width: imgButtonSmall.width,
+                                    height: imgButtonSmall.height,
+                                    image: 29371,
+                                    tooltip: "Select used objects",
+                                    onClick: () => objectSelectionWindow.open()
+                                }),
+                                button({
+                                    width: imgButtonSmall.width,
+                                    height: imgButtonSmall.height,
+                                    text: "R",
+                                    tooltip: "Rotate"
+                                })
+                            ]
+                        })
+
+                    ]
                 })
 
             ]

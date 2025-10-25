@@ -3,3 +3,9 @@ export enum usedFor {
     Outline,
     Background
 }
+
+export enum usedForLabels {
+    "Text",
+    "Outline",
+    "Background"
+}

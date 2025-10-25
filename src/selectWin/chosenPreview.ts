@@ -1,12 +1,12 @@
 import { vertical, label, button, groupbox } from "openrct2-flexui";
-import { previewGraphics } from "../guiFx/previewGraphics";
-import { imgButtonSmall, padCentre } from "../const/commonUiConsts";
+import { imgButtonSmall, padCentre, sceneryPreview } from "../const/commonUiConsts";
 
 export function chosenPreview() {
     return  groupbox({
+                width: sceneryPreview.width+12,
                 text: "O type",
                 content: [
-                    previewGraphics(),
+                    //previewGraphics(12345),
                     label({
                         padding: padCentre,
                         height: 16,
